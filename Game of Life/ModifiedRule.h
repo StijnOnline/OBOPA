@@ -1,11 +1,10 @@
 #pragma once
 #include "Rule.h"
 
-
-class DefaultRule: public Rule
+class ModifiedRule : public Rule
 {
 public:
-	DefaultRule();
-	virtual ~DefaultRule();
+	ModifiedRule();
+	virtual ~ModifiedRule();
 	bool getNewCellState(bool currentstate, int neigbour) override;
 };

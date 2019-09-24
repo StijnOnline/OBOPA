@@ -155,12 +155,14 @@
     <ClCompile Include="CellChecker.cpp" />
     <ClCompile Include="DefaultRule.cpp" />
     <ClCompile Include="Game of Life.cpp" />
+    <ClCompile Include="ModifiedRule.cpp" />
     <ClCompile Include="Rule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="CellChecker.h" />
     <ClInclude Include="DefaultRule.h" />
+    <ClInclude Include="ModifiedRule.h" />
     <ClInclude Include="Rule.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

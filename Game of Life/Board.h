@@ -1,4 +1,6 @@
 #pragma once
+#include "Rule.h"
+#include "CellChecker.h"
 class Board
 {
 public:
@@ -6,12 +8,12 @@ public:
 	virtual ~Board();
 	void randomize();
 	bool getCell(int x, int y);
-	int getNeigbours(int x, int y);
+	int getneighbours(int x, int y);
 	void updateBoard();
 	void printBoard();
 private:
-	bool board[5][5] = { 0 };
+	static const int BOARD_SIZE = 5;
+	bool board[BOARD_SIZE][BOARD_SIZE] = { 0 };
 	Rule* rule;
 	CellChecker* cellChecker;
 };
-

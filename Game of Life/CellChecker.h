@@ -7,7 +7,7 @@ public:
 	CellChecker(Rule* rule);
 	virtual ~CellChecker();
 
-	bool getNewCellState(bool currentstate, int neigbours);
+	bool getNewCellState(bool currentstate, int neighbours);
 
 private:
 	Rule* rule;

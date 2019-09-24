@@ -1,18 +1,21 @@
 #include <iostream>
+#include <windows.h>
+
 #include "Board.h"
 
 int main()
 {
+	const int MAX_CYCLES = 10;
+
 	Board* board = new Board();
 	board->randomize();
-	
-	//tests
-	//std::cout << (*board).getNeigbours(1, 0) << std::endl; // false
-	//std::cout << cellChecker->getNewCellState(true,0) << std::endl; // false
-	//std::cout << cellChecker->getNewCellState(true,5) << std::endl; //false
-	//std::cout << cellChecker->getNewCellState(false,3) << std::endl; //true
-	//std::cout << cellChecker->getNewCellState(false,0) << std::endl; //false
 
-	std::cout << std::endl;
-	board->printBoard();
+	for (int i = 0; i <= MAX_CYCLES; i++) {
+		Sleep(2000);
+		system("CLS");
+		board->updateBoard();
+		std::cout << "Cycle " << i << " of " << MAX_CYCLES <<std::endl;
+		board->printBoard();
+	}
+
 }
