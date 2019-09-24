@@ -12,6 +12,6 @@ public:
 private:
 	bool board[5][5] = { 0 };
 	Rule* rule;
-
+	CellChecker* cellChecker;
 };
 
