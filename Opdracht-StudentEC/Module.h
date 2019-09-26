@@ -16,6 +16,7 @@ public:
 
 public:
 	void AddStudent(Student* student);
+	void RemoveStudent(Student* student);
 	void printModule();
 	
 };

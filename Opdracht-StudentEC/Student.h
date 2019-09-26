@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+class Module;
+
 class Student
 {
 public:

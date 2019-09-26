@@ -7,10 +7,12 @@ Student::~Student(){}
 
 void Student::printEC()
 {
+	
 	int EC = 0;
 	std::vector<Module*>::iterator i = modules.begin();
 	while (i != modules.end()) {
 		EC += (*(*i)).EC;
+		i++;
 	}
-	std::cout << "Student: " << name << " EC:" << EC << std::endl;
+	std::cout << name << " EC: " << EC << std::endl;
 }
