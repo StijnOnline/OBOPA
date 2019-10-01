@@ -17,7 +17,7 @@ BankRekening& BankRekening::operator-=(const  Transactie& transactie)
 {
 	saldo -= transactie.getAmount() * (transactie.isReceive() ? 1 : -1);
 	auto i = std::find(transacties.begin(), transacties.end(), &transactie);
-	&transacties.erase(i);
+	transacties.erase(i);
 	return *this;
 }
 

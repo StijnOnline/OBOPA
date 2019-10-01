@@ -2,6 +2,7 @@
 
 
 #include <iostream>
+#include <string>
 
 Transactie::Transactie(double amount, std::string date, bool receiving )
 	: receive(receiving), amount(amount), date(date)
@@ -23,6 +24,5 @@ double Transactie::getAmount() const
 
 std::string Transactie::getDate() const
 {
-	std::cout << date; //not executed
 	return date;
 }
