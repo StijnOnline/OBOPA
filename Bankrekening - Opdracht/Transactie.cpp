@@ -1,13 +1,15 @@
 #include "Transactie.h"
 
-Transactie::Transactie(double amount, std::string date, bool receive )
-	: receive(receive), amount(amount), date(date)
+
+#include <iostream>
+
+Transactie::Transactie(double amount, std::string date, bool receiving )
+	: receive(receiving), amount(amount), date(date)
 {
+	
 }
 
-Transactie::~Transactie()
-{
-}
+Transactie::~Transactie(){}
 
 bool Transactie::isReceive() const
 {
@@ -21,5 +23,6 @@ double Transactie::getAmount() const
 
 std::string Transactie::getDate() const
 {
+	std::cout << date; //not executed
 	return date;
 }
