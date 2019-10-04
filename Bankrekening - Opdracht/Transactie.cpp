@@ -4,13 +4,18 @@
 #include <iostream>
 #include <string>
 
-Transactie::Transactie(double amount, std::string date, bool receiving )
-	: receive(receiving), amount(amount), date(date)
+Transactie::Transactie(int ID, double amount, std::string date, bool receiving )
+	: ID(ID), receive(receiving), amount(amount), date(date)
 {
 	
 }
 
 Transactie::~Transactie(){}
+
+int Transactie::getID() const
+{
+	return ID;
+}
 
 bool Transactie::isReceive() const
 {
