@@ -13,34 +13,31 @@ concurrent_vector<T>::~concurrent_vector()
 template<typename T>
 void concurrent_vector<T>::add(T item)
 {
-	mutex.lock();
+	std::lock_guard<std::mutex> guard(mutex);
+
 	vector.push_back(item);
-	mutex.unlock();
+	
 }
 
 template<typename T>
-void concurrent_vector<T>::get(std::promise<T>* promise, int i)
+void concurrent_vector<T>::printLength()
 {
-	mutex.lock();
-	T value = vector[i];	
-	promise->set_value(value);
-	mutex.unlock();
+	std::lock_guard<std::mutex> guard(mutex);
+
+	std::cout << "Vector has a size of " << vector.size() << std::endl;
+
 }
 
 template<typename T>
-void concurrent_vector<T>::erase(int i)
+void concurrent_vector<T>::printAll()
 {
-	mutex.lock();
-	vector.erase(i);
-	mutex.unlock();
-}
+	std::lock_guard<std::mutex> guard(mutex);
 
-template<typename T>
-void concurrent_vector<T>::print()
-{
+	std::cout << "Vector Contents: " << std::endl;
 	auto i = vector.begin();
 	while (i != vector.end()) {
-		std::cout << (*i) << std::endl;
+		std::cout << (*i) << ", ";
 		i++;
 	}
+	std::cout << std::endl;
 }

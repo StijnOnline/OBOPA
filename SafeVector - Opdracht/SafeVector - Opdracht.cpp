@@ -5,23 +5,17 @@
 
 int main()
 {
-	std::promise<int> promise;
-	std::future<int> future = promise.get_future();
-
 	concurrent_vector<int>* cvector = new concurrent_vector<int>();
+	cvector->add(0);
 
 	std::thread thread1 = std::thread(&concurrent_vector<int>::add, cvector, 1);
-	std::thread thread2 = std::thread(&concurrent_vector<int>::get, &promise, 0);
-	//^ something wrong with this line causes:
-	//	C2672 in thread line 39:14
-	//  C2893 in thread line 35:1
+	std::thread thread2 = std::thread(&concurrent_vector<int>::printLength, cvector);
 
+	//still race condition
 
 	thread1.join();
-	//thread2.join();
+	thread2.join();
 
-	cvector->print();
+	cvector->printAll();
 
-
-	std::cout << future.get();
 }

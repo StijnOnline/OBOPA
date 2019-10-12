@@ -7,13 +7,14 @@ template<typename T>
 class concurrent_vector
 {
 public:
+	bool safe = true;
+
 	concurrent_vector();
 	virtual ~concurrent_vector();
 
 	void add(T);
-	void get(std::promise<T>* promise, int i);
-	void erase(int i);
-	void print();
+	void printLength();
+	void printAll();
 
 private:
 	std::vector<T> vector;
