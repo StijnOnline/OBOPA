@@ -11,6 +11,7 @@ public:
 	Parent(const Parent& other);
 	virtual ~Parent();
 	Parent& operator=(const Parent& other);
+	Parent(Parent&& other) noexcept; // move-constructor
 
 	friend std::ostream& operator<<(std::ostream& os, const Parent& parent);
 

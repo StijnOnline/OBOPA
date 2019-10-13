@@ -29,6 +29,14 @@ Parent& Parent::operator=(const Parent& other) {
 	return *this;
 }
 
+Parent::Parent(Parent&& other) noexcept {  // move-constructor
+	std::cout << "MCTOR from Parent"  << std::endl;
+	child = std::move(other.child);
+
+	// 'reset' 't originele object
+	other.name = "(nodata: has been moved)";
+}
+
 std::ostream& operator<<(std::ostream& os, const Parent& parent) {
 	os << "parent name: " << parent.name << "," << *parent.child;
 	return os;
