@@ -26,7 +26,7 @@ public:
 
 private:
 	std::string name;
-	int* data;
+	int* data; 
 	int size;
 
 	friend std::ostream& operator<<(std::ostream& os, const Block& block);

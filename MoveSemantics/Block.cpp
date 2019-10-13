@@ -3,12 +3,16 @@
 
 Block::Block(int size, std::string name) : name(name), size(size) {
 	std::cout << "CTOR Block '" << name << "' @" << this << std::endl;
-	this->data = new int[size];
+	this->data = new int[size]; //Does this assign an array of ints to an int pointer, how is that possible
 }
 
 Block::~Block() noexcept {
 	std::cout << "DTOR Block '" << this->name << "' @" << this << std::endl;
-	delete[] data;
+	//delete[] data; 
+	//realy dont know what is happening, this link describes it with a possible explanation
+	//https://developercommunity.visualstudio.com/content/problem/346875/delete-calls-scalar-deleting-destructor-instead-of.html
+	
+	
 }
 
 Block::Block(const Block& other) : name(other.name), size(other.size) {
@@ -22,7 +26,8 @@ Block& Block::operator=(const Block& other) {
 	std::cout << "Assignment opr Block '" << this->name << "' @" << this << std::endl;
 	if (this == &other) return *this;
 
-	delete[] data;
+	//delete[] data; same as above
+	delete data;
 
 	this->name = other.name;
 	this->size = other.size;
@@ -36,9 +41,9 @@ Block& Block::operator=(const Block& other) {
 // move-constructor
 Block::Block(Block&& other) noexcept {
 	std::cout << "MCTOR from Block '" << other.name << "' @" << &other << " to Block @" << this << std::endl;
-	name = std::move(other.name);
-	data = other.data;
 	size = other.size;
+	name = other.name;
+	data = other.data;
 
 	// 'reset' 't originele object
 	other.name = "(nodata: has been moved)";
@@ -50,15 +55,15 @@ Block& Block::operator=(const Block&& other) noexcept
 {
 	std::cout << "MATOR from Block '" << other.name << "' @" << &other << " to Block @" << this << std::endl;
 
-	//(*this) = std::move(other); HAHA Infinite loop
-
 	if (this == &other) return *this;
 
 	delete[] data;
 
-	this->name = std::move(other.name);
-	this->size = std::move(other.size);
-	this->data = std::move(other.data);
+	Block b(other.size, other.name);
+	b.data = other.data;
+	
+	//(*this) = std::move(other); HAHA Infinite loop
+
 	return *this;
 
 }
