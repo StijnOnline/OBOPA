@@ -11,7 +11,6 @@ Parent::Parent(std::string name) {
 Parent::Parent(const Parent& other) {
 	std::cout << "Parent cctor" << std::endl;
 	this->name = other.name;
-	//child = std::move(other.child);  error operator= is a deleted function
 	child = std::make_unique<Child>("ChildOf" + other.name);
 }
 
@@ -25,7 +24,6 @@ Parent& Parent::operator=(const Parent& other) {
 	if (this == &other) return *this;
 
 	this->name = other.name;
-	//child = std::move(other.child);  error operator= is a deleted function
 	child = std::make_unique<Child>("ChildOf" + other.name);
 
 	return *this;
