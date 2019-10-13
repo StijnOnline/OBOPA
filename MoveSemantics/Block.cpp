@@ -27,7 +27,6 @@ Block& Block::operator=(const Block& other) {
 	if (this == &other) return *this;
 
 	//delete[] data; same as above
-	delete data;
 
 	this->name = other.name;
 	this->size = other.size;
