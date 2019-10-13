@@ -11,11 +11,12 @@ int main()
 	std::thread thread1 = std::thread(&concurrent_vector<int>::add, cvector, 1);
 	std::thread thread2 = std::thread(&concurrent_vector<int>::printLength, cvector);
 
-	//still race condition
+	//apparently working, but not for me
 
 	thread1.join();
 	thread2.join();
 
 	cvector->printAll();
 
+	std::cin.ignore();
 }
